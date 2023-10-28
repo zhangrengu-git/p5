@@ -143,10 +143,10 @@ function mousePressed() {
   onPressed = true;
 
   // If the instruction is shown, clear the background and hide the instruction
-  if (showInstruction) {
-    background(255);
-    showInstruction = false;
-  }
+  // if (showInstruction) {
+  //   background(255);
+  //   showInstruction = false;
+  // }
 }
 
 function mouseReleased() {
