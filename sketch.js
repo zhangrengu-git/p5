@@ -1,5 +1,5 @@
 class Particle {
-  constructor(x, y, xOffset, yOffset) {
+  constructor(x, y, xOffset, yOffset,shape) {
     // Initialize particle properties
     this.loc = createVector(x, y);
 
@@ -22,6 +22,8 @@ class Particle {
     // Initialize life tracking variables
     this.passedLife = 0;
     this.dead = false;
+    this.size = random(5, 10);
+    this.shape = shape;
   }
 
   update() {
@@ -73,15 +75,28 @@ class Particle {
   }
 
   display() {
-    // Draw the particle with a dynamic stroke weight and alpha
-    strokeWeight(this.weight + 1.5);
-    stroke(0, this.alpha);
-    point(this.loc.x, this.loc.y);
-
-    // Draw the particle with its color and weight
-    strokeWeight(this.weight);
-    stroke(this.c);
-    point(this.loc.x, this.loc.y);
+    if (this.shape === "circle") {
+      strokeWeight(this.weight + 1.5);
+      stroke(0, this.alpha);
+      point(this.loc.x, this.loc.y, this.size);
+      strokeWeight(this.weight);
+      stroke(this.c);
+      point(this.loc.x, this.loc.y, this.size);
+    } else if (this.shape === "rectangle") {
+      strokeWeight(this.weight + 1.5);
+      stroke(0, this.alpha);
+      rect(this.loc.x, this.loc.y, this.size);
+      strokeWeight(this.weight);
+      stroke(this.c);
+      rect(this.loc.x, this.loc.y, this.size);
+    } else if (this.shape === "triangle") {
+      strokeWeight(this.weight + 1.5);
+      stroke(0, this.alpha);
+      triangle(this.loc.x, this.loc.y, this.size);
+      strokeWeight(this.weight);
+      stroke(this.c);
+      triangle(this.loc.x, this.loc.y, this.size);
+    }
   }
 }
 
@@ -123,7 +138,9 @@ function draw() {
     }
     isPlaying = true;
     for (let i = 0; i < 10; i++) {
-      let newP = new Particle(mouseX, mouseY, i + pts.length, i + pts.length);
+      let shapes = ["circle", "rectangle", "triangle"];
+      let shape = random(shapes);
+      let newP = new Particle(mouseX, mouseY, i + pts.length, i + pts.length,shape);
       pts.push(newP);
     }
   }
