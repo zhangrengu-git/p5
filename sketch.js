@@ -114,10 +114,6 @@ function setup() {
   // Set the background color to white
   background(255);
 }
-function loaded() {
-  // 在音频加载完成后，可以在这里设置音频的播放参数
-  song.play();
-}
 
 function draw() {
   
