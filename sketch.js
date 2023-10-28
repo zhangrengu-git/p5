@@ -95,7 +95,7 @@ let song; // Variable to store the song
 function setup() {
   // Create a canvas to fill the entire window
 
-//   song = loadSound("test.wav");
+  song = loadSound("test.wav");
 
   createCanvas(windowWidth, windowHeight);
 
@@ -112,6 +112,7 @@ function setup() {
 }
 
 function draw() {
+  song.play();
   // Create new particles when the mouse is pressed
   if (onPressed) {
     for (let i = 0; i < 10; i++) {
