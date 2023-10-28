@@ -122,6 +122,7 @@ function draw() {
       let newP = new Particle(mouseX, mouseY, i + pts.length, i + pts.length);
       pts.push(newP);
     }
+    song.pause();
   }
 
   // Update and display existing particles
@@ -134,7 +135,7 @@ function draw() {
       p.display();
     }
   }
-  song.pause();
+  
 }
 
 function mousePressed() {
