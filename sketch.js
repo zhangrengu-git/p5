@@ -99,8 +99,6 @@ function preload() {
 function setup() {
   // Create a canvas to fill the entire window
 
-  song = loadSound("test.wav");
-
   createCanvas(windowWidth, windowHeight);
 
   // Set drawing parameters
@@ -111,10 +109,14 @@ function setup() {
   // Initialize the array for particles
   pts = [];
 
-  song.play();
+  // song.play();
   
   // Set the background color to white
   background(255);
+}
+function loaded() {
+  // 在音频加载完成后，可以在这里设置音频的播放参数
+  song.play();
 }
 
 function draw() {
