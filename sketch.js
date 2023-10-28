@@ -108,8 +108,6 @@ function setup() {
 
   // Initialize the array for particles
   pts = [];
-
-  // song.play();
   
   // Set the background color to white
   background(255);
@@ -136,6 +134,7 @@ function draw() {
       p.display();
     }
   }
+  song.pause();
 }
 
 function mousePressed() {
