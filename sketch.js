@@ -118,8 +118,10 @@ function draw() {
   
   // Create new particles when the mouse is pressed
   if (onPressed) {
-    isPlaying = true; // 防止重复播放
-    song.play();
+    if(!song.isPlaying()){
+      song.play();
+    }
+    isPlaying = true;
     for (let i = 0; i < 10; i++) {
       let newP = new Particle(mouseX, mouseY, i + pts.length, i + pts.length);
       pts.push(newP);
