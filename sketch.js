@@ -92,6 +92,10 @@ let onPressed,
 let f; // Unused variable (may be removed)
 let song; // Variable to store the song
 
+function preload() {
+  song = loadSound("test.wav");
+}
+
 function setup() {
   // Create a canvas to fill the entire window
 
@@ -107,14 +111,17 @@ function setup() {
   // Initialize the array for particles
   pts = [];
 
+  song.play();
+  
   // Set the background color to white
   background(255);
 }
 
 function draw() {
-  song.play();
+  
   // Create new particles when the mouse is pressed
   if (onPressed) {
+    song.play();
     for (let i = 0; i < 10; i++) {
       let newP = new Particle(mouseX, mouseY, i + pts.length, i + pts.length);
       pts.push(newP);
