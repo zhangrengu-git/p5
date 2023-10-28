@@ -117,7 +117,7 @@ function setup() {
 function draw() {
   
   // Create new particles when the mouse is pressed
-  if (onPressed && !isPlaying) {
+  if (onPressed) {
     isPlaying = true; // 防止重复播放
     song.play();
     for (let i = 0; i < 10; i++) {
