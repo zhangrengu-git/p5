@@ -91,6 +91,7 @@ let onPressed,
   showInstruction = true; // Flags for mouse and instruction display
 let f; // Unused variable (may be removed)
 let song; // Variable to store the song
+let isPlaying = false;
 
 function preload() {
   song = loadSound("test.wav");
@@ -116,13 +117,13 @@ function setup() {
 function draw() {
   
   // Create new particles when the mouse is pressed
-  if (onPressed) {
+  if (onPressed && !isPlaying) {
+    isPlaying = true; // 防止重复播放
     song.play();
     for (let i = 0; i < 10; i++) {
       let newP = new Particle(mouseX, mouseY, i + pts.length, i + pts.length);
       pts.push(newP);
     }
-    song.pause();
   }
 
   // Update and display existing particles
@@ -130,6 +131,10 @@ function draw() {
     let p = pts[i];
     if (p.dead) {
       pts.splice(i, 1);
+      if (pts.length === 0) {
+        isPlaying = false;
+        song.stop();
+      }
     } else {
       p.update();
       p.display();
